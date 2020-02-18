@@ -6,7 +6,6 @@ public class Damagable : MonoBehaviour
 {
     public int Health;
 
-    public int enemyHealth; 
     public float enemyKnockedOutTime = 3f;
 
     public void PlayerDamage(int damage)
