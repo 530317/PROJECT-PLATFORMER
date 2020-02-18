@@ -6,6 +6,8 @@ TagManager:
   tags:
   - plant
   - PlantStem
+  - fist
+  - Enemy
   layers:
   - Default
   - TransparentFX
