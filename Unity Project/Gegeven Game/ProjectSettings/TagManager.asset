@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - plant
-  - PlantStem
+  - Ground
   layers:
   - Default
   - TransparentFX
