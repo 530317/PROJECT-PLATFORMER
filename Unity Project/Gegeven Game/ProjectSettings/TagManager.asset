@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - plant
+  - PlantStem
+  - fist
+  - Enemy
   - Ground
+  - boot
   layers:
   - Default
   - TransparentFX

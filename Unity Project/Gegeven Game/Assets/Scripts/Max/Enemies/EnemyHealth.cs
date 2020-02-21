@@ -18,7 +18,7 @@ public class EnemyHealth : Damagable
         if(collision.CompareTag("fist"))
         {
             EnemyDamage(25);
-            transform.DOShakeScale(1f, 0.5f);
+            transform.DOShakeScale(1f, 0.1f);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * upThrowForce, ForceMode2D.Impulse);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * throwBackForce, ForceMode2D.Impulse);
         }
@@ -29,7 +29,6 @@ public class EnemyHealth : Damagable
         if(Health <= 0)
         {
             transform.DOScaleY(0, 1f);
-          
         }
     }
 
