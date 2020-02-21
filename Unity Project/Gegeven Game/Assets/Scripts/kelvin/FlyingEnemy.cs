@@ -7,6 +7,7 @@ using static Platformer.Mechanics.PatrolPath;
 
 public class FlyingEnemy : MonoBehaviour
 {
+    public GameObject player;
     public GameObject beginposobject;
     public GameObject endposobject;
     public Vector3 beginpos;
@@ -14,6 +15,10 @@ public class FlyingEnemy : MonoBehaviour
     public float speed;
     bool movebegin;
     private SpriteRenderer spriteRen;
+    private float smooth = 50f;
+    private float step;
+    private float Target;
+    private bool atack;
 
     private void Start()
     {
@@ -24,7 +29,33 @@ public class FlyingEnemy : MonoBehaviour
     }
     private void Update()
     {
-        float step = speed * Time.deltaTime;
+        
+        if (atack)
+        {
+            Atack();
+        }
+        else
+            Move();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            atack = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        atack = false;
+    }
+    private void Atack()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+    }
+    private void Move()
+    {
+        step = speed * Time.deltaTime;
         if (movebegin)
         {
             transform.position = Vector3.MoveTowards(transform.position, beginpos, step);
@@ -43,6 +74,6 @@ public class FlyingEnemy : MonoBehaviour
         {
             movebegin = true;
         }
-       
     }
+
 }
