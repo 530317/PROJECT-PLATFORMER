@@ -10,8 +10,8 @@ public class ItemSelector : MonoBehaviour
 
     public int inventorySize;
 
-    public int maxInventorySize;
-    public int minInventorySize;
+    private int maxInventorySize;
+    private int minInventorySize;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class ItemSelector : MonoBehaviour
         {
             inventorySize++;
 
-            if(inventorySize >=  maxInventorySize)
+            if(inventorySize > maxInventorySize)
             {
                 inventorySize = 0;
             }
@@ -51,8 +51,6 @@ public class ItemSelector : MonoBehaviour
         else
         {
             boots[0].SetActive(false);
-            boots[1].SetActive(true);
-            boots[2].SetActive(false);
         }
 
         if(inventorySize == 1)
@@ -61,7 +59,7 @@ public class ItemSelector : MonoBehaviour
         }
         else
         {
-            boots[1].SetActive(true);
+            boots[1].SetActive(false);
         }
 
         if(inventorySize == 2)

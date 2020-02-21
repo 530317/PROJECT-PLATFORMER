@@ -39,11 +39,11 @@ public class PlayerControler2 : MonoBehaviour
         }
         if (xAxis > 0.1)
         {
-            spriteRen.flipX = false;
+            spriteRen.flipX = true;
         }
         if (xAxis < 0.1)
         {
-            spriteRen.flipX = true;
+            spriteRen.flipX = false;
         }
     }
 
