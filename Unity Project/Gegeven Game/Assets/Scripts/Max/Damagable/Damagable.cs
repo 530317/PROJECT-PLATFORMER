@@ -5,26 +5,31 @@ using UnityEngine;
 public class Damagable : MonoBehaviour
 {
 
-    public int Health;
+    public float health;
 
     public float enemyKnockedOutTime = 3f;
     private float bloodLossSpeed = 5f;
 
-    public void PlayerDamage(int damage)
+    private void Start()
     {
-        StartCoroutine(BloodLossTime());
-        Health -= damage;
+        health = Mathf.Clamp(100, 0, 100);
     }
 
-    public void EnemyDamage(int damage)
+    public void EnemyDamage(float damage)
     {
-        Health -= damage;
+        health -= damage;
 
     }
 
-    public IEnumerator BloodLossTime()
+    public IEnumerator BloodLossTime(float damageTime, int damageCount, float damageAmount)
     {
-        yield return new WaitForSeconds(bloodLossSpeed);
+        int currentCount = 0;
+        while(currentCount < damageAmount)
+        {
+            health -= damageAmount;
+            yield return new WaitForSeconds(damageTime);
+            currentCount++;
+        }
     }
 
     public IEnumerator KnockOutTime()

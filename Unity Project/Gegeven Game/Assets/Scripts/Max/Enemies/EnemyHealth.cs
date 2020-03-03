@@ -26,7 +26,7 @@ public class EnemyHealth : Damagable
 
     private void WhenEnemyIsDown()
     {
-        if(Health <= 0)
+        if(health <= 0)
         {
             transform.DOScaleY(0, 1f);
         }
