@@ -13,11 +13,11 @@ public class PlayerHealth : Damagable
 
     private void Update()
     {
-        StartCoroutine(OxygenTime(1000, 1, 0.001f));
+        StartCoroutine(OxygenTime(1000, 1, 0.08f));
 
         if (oxygenLvl <= 0)
         {
-            StartCoroutine(BloodLossTime(1000, 1, 0.1f));
+            StartCoroutine(BloodLossTime(1000, 1, 0.08f));
 
         }
         else if (oxygenLvl > 0)
@@ -39,22 +39,14 @@ public class PlayerHealth : Damagable
     {
         if(collision.collider.CompareTag("PlantStem"))
         {
-            if (oxygenLvl <= 0)
+            if (health <= 0)
             {
-                Oxygen(0);
+                PlayerDamage(15);
             }
             else
             {
-                Oxygen(20);
+                PlayerDamage(15);
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("oxygenTank"))
-        {
-            AddOxygen(25f);
         }
     }
 
@@ -74,7 +66,7 @@ public class PlayerHealth : Damagable
         oxygenLvl -= oxygenDamage;
     }
 
-    private void AddOxygen(float amountOfOxygen)
+    public void AddOxygen(float amountOfOxygen)
     {
         oxygenLvl += amountOfOxygen;
     }
