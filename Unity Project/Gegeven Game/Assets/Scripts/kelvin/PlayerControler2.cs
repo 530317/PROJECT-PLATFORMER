@@ -37,11 +37,11 @@ public class PlayerControler2 : MonoBehaviour
             rigiBody.velocity = Vector2.up * force;
             jumps--;
         }
-        if (xAxis > 0.1)
+        if (xAxis < 0.1)
         {
             spriteRen.flipX = true;
         }
-        if (xAxis < 0.1)
+        if (xAxis > 0.1)
         {
             spriteRen.flipX = false;
         }
