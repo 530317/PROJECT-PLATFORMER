@@ -15,6 +15,7 @@ public class PlayerHealth : Damagable
     {
         StartCoroutine(OxygenTime(1000, 1, 0.08f));
 
+
         if (oxygenLvl <= 0)
         {
             StartCoroutine(BloodLossTime(1000, 1, 0.08f));
@@ -47,6 +48,11 @@ public class PlayerHealth : Damagable
             {
                 PlayerDamage(15);
             }
+        }
+
+        if(collision.collider.CompareTag("oxygenTank"))
+        {
+            AddOxygen(25f);
         }
     }
 

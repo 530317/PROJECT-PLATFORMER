@@ -8,6 +8,8 @@ public class GiveOxygen : PlayerHealth
     {
         if(collision.collider.CompareTag("Player"))
         {
+            StopCoroutine(OxygenTime(1000, 1, 0.08f));
+
             AddOxygen(25f);
             Destroy(gameObject);
         }
