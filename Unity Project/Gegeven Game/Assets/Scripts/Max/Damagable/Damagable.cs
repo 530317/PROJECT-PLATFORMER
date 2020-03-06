@@ -15,6 +15,8 @@ public class Damagable : MonoBehaviour
         health = Mathf.Clamp(100, 0, 100);
     }
 
+    public void
+
     public void EnemyDamage(float damage)
     {
         health -= damage;
