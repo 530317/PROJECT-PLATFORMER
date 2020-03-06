@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class PlayerHealth : Damagable
 {
@@ -12,13 +13,21 @@ public class PlayerHealth : Damagable
 
     private void Update()
     {
+        StartCoroutine(OxygenTime(1000, 1, 0.001f));
+
         if (oxygenLvl <= 0)
         {
             StartCoroutine(BloodLossTime(1000, 1, 0.1f));
+
         }
         else if (oxygenLvl > 0)
         {
             StopAllCoroutines();
+        }
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
 
         oxygenSlider.value = oxygenLvl;
@@ -46,6 +55,17 @@ public class PlayerHealth : Damagable
         if(collision.CompareTag("oxygenTank"))
         {
             AddOxygen(25f);
+        }
+    }
+
+    public IEnumerator OxygenTime(float oxygenTime, int oxygenDamageCount, float oxygenDamageAmount)
+    {
+        int currentCount = 0;
+        while (currentCount < oxygenDamageAmount)
+        {
+            oxygenLvl -= oxygenDamageAmount;
+            yield return new WaitForSeconds(oxygenTime);
+            currentCount++;
         }
     }
 

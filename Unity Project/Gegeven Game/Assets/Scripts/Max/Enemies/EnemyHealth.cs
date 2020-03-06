@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using XboxCtrlrInput;
 
 public class EnemyHealth : Damagable
 {
     public float throwBackForce;
     public float upThrowForce;
+
 
     private void Update()
     {
@@ -18,7 +20,7 @@ public class EnemyHealth : Damagable
         if(collision.CompareTag("fist"))
         {
             EnemyDamage(25);
-            transform.DOShakeScale(1f, 0.1f);
+            transform.DOShakeScale(1f, 0.09f);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * upThrowForce, ForceMode2D.Impulse);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * throwBackForce, ForceMode2D.Impulse);
         }
