@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class PlayerHealth : Damagable
 {
@@ -15,10 +16,16 @@ public class PlayerHealth : Damagable
         if (oxygenLvl <= 0)
         {
             StartCoroutine(BloodLossTime(1000, 1, 0.1f));
+
         }
         else if (oxygenLvl > 0)
         {
             StopAllCoroutines();
+        }
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
 
         oxygenSlider.value = oxygenLvl;
