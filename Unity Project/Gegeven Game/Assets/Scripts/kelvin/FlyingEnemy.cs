@@ -4,21 +4,26 @@ using Platformer.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 using static Platformer.Mechanics.PatrolPath;
+using DG.Tweening;
 
 public class FlyingEnemy : MonoBehaviour
 {
     public GameObject player;
     public GameObject beginposobject;
     public GameObject endposobject;
+
     public Vector3 beginpos;
     public Vector3 endpos;
-    public float speed;
-    bool movebegin;
+
     private SpriteRenderer spriteRen;
+
     private float smooth = 50f;
     private float step;
     private float Target;
+    public float speed;
+
     private bool atack;
+    bool movebegin;
 
     private void Start()
     {
@@ -52,6 +57,12 @@ public class FlyingEnemy : MonoBehaviour
     private void Atack()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+
+        //player.transform.DOMoveX(-0.5f, 0.09f).SetEase(Ease.OutFlash);
+        if (transform.position == player.transform.position)
+        {
+            atack = false;
+        }
     }
     private void Move()
     {
@@ -74,6 +85,7 @@ public class FlyingEnemy : MonoBehaviour
         {
             movebegin = true;
         }
+      
     }
 
 }
