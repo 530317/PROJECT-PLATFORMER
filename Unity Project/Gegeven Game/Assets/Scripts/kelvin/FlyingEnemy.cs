@@ -57,24 +57,15 @@ public class FlyingEnemy : MonoBehaviour
     private void Atack()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
-        speed = 11;
+
+        //player.transform.DOMoveX(-0.5f, 0.09f).SetEase(Ease.OutFlash);
         if (transform.position == player.transform.position)
         {
-            //if (spriteRen.flipX == true)
-            //{
-            player.transform.DOPunchScale(new Vector3(0.1f,0f), 1f);
-            //}
-            //if (spriteRen.flipX == false)
-            //{
-            //    player.transform.DOMoveX(-0.5f, 0.09f).SetEase(Ease.OutBounce);
-            //}
-
             atack = false;
         }
     }
     private void Move()
     {
-        speed = 4;
         step = speed * Time.deltaTime;
         if (movebegin)
         {
