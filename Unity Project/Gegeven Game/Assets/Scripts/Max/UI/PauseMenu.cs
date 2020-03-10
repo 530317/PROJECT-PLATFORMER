@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject panel;
 
-    private bool paused = false;
+    public bool paused = false;
 
 
     void Update()

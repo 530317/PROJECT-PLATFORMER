@@ -11,10 +11,15 @@ public class PlayerHealth : Damagable
     public Slider oxygenSlider;
     public Slider healthSlider;
 
+    PauseMenu pauseMenu;
+
+    private void Start()
+    {
+        pauseMenu = FindObjectOfType<PauseMenu>();
+    }
     private void Update()
     {
         StartCoroutine(OxygenTime(1000, 1, 0.08f));
-
 
         if (oxygenLvl <= 0)
         {
@@ -65,6 +70,12 @@ public class PlayerHealth : Damagable
             yield return new WaitForSeconds(oxygenTime);
             currentCount++;
         }
+
+        if (pauseMenu.paused == true)
+        {
+            StopCoroutine("OxygenTime");
+        }
+
     }
 
     private void Oxygen(float oxygenDamage)

@@ -58,15 +58,15 @@ public class PlayerControler2 : MonoBehaviour
         }
         if (xAxis > 0.1)
         {
-            spriteRen.flipX = false;
-            playerState = PlayerState.moving;
-            playerDirection = PlayerDirection.left;
-        }
-        if (xAxis < 0.1)
-        {
             spriteRen.flipX = true;
             playerState = PlayerState.moving;
             playerDirection = PlayerDirection.right;
+        }
+        if (xAxis < 0.1)
+        {
+            spriteRen.flipX = false;
+            playerState = PlayerState.moving;
+            playerDirection = PlayerDirection.left;
         }
         if (xAxis == 0.1)
         {
