@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
+public enum PlayerState
+{
+    idle = 0,
+    moving = 1
+}
+
+public enum PlayerDirection
+{
+    right,
+    left,
+    up,
+    punch
+}
 
 public class PlayerControler2 : MonoBehaviour
 {
@@ -15,6 +28,10 @@ public class PlayerControler2 : MonoBehaviour
 
     public int jumpsvalue;
     private int jumps;
+
+    public Animator playerAnimator;
+    public PlayerState playerState;
+    public PlayerDirection playerDirection;
 
     private void Start()
     {
@@ -32,6 +49,8 @@ public class PlayerControler2 : MonoBehaviour
     }
     private void Update()
     {
+        UpdateAnimatorValues();
+
         if (XCI.GetButtonDown(XboxButton.A) && jumps > 0)
         {
             rigiBody.velocity = Vector2.up * force;
@@ -39,11 +58,15 @@ public class PlayerControler2 : MonoBehaviour
         }
         if (xAxis < 0.1)
         {
-            spriteRen.flipX = true;
+            spriteRen.flipX = false;
+            playerState = PlayerState.moving;
+            playerDirection = PlayerDirection.left;
         }
         if (xAxis > 0.1)
         {
-            spriteRen.flipX = false;
+            spriteRen.flipX = true;
+            playerState = PlayerState.moving;
+            playerDirection = PlayerDirection.right;
         }
     }
 
@@ -56,6 +79,13 @@ public class PlayerControler2 : MonoBehaviour
             jumps = jumpsvalue;
         }
     }
+
+    private void UpdateAnimatorValues()
+    {
+        playerAnimator.SetInteger("state", (int)playerState);
+        playerAnimator.SetFloat("direction", (float)playerDirection);
+    }
+
 
 }
 
