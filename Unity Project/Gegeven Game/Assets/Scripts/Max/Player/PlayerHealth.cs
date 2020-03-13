@@ -13,6 +13,8 @@ public class PlayerHealth : Damagable
 
     PauseMenu pauseMenu;
 
+    [SerializeField] private AudioSource audio;
+
     private void Start()
     {
         pauseMenu = FindObjectOfType<PauseMenu>();
@@ -45,6 +47,7 @@ public class PlayerHealth : Damagable
     {
         if (collision.CompareTag("PlantStem"))
         {
+            audio.Play();
             if (health <= 0)
             {
                 PlayerDamage(3);

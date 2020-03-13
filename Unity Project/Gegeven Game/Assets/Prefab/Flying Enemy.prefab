@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f827c18e99457c4791e9965d9882087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   beginposobject: {fileID: 200238944984662981}
   endposobject: {fileID: 200238944233454312}
   beginpos: {x: -0.28, y: 0, z: 0}

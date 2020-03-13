@@ -57,7 +57,7 @@ public class FlyingEnemy : MonoBehaviour
     private void Atack()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
-        speed = 11;
+        speed = 7;
         if (transform.position == player.transform.position)
         {
             //if (spriteRen.flipX == true)
