@@ -19,8 +19,8 @@ public class EnemyHealth : Damagable
     {
         if(collision.CompareTag("fist"))
         {
-            EnemyDamage(25);
-            transform.DOShakeScale(1f, 0.09f);
+            EnemyDamage(10);
+            transform.DOPunchScale(new Vector2(0.05f, 0.05f), 1f);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * upThrowForce, ForceMode2D.Impulse);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * throwBackForce, ForceMode2D.Impulse);
         }

@@ -41,23 +41,24 @@ public class PlayerHealth : Damagable
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.collider.CompareTag("PlantStem"))
+        if (collision.CompareTag("PlantStem"))
         {
             if (health <= 0)
             {
-                PlayerDamage(15);
+                PlayerDamage(3);
             }
             else
             {
-                PlayerDamage(15);
+                PlayerDamage(3);
             }
         }
 
-        if(collision.collider.CompareTag("oxygenTank"))
+        if (collision.CompareTag("oxygenTank"))
         {
             AddOxygen(25f);
+            Destroy(collision.gameObject);
         }
     }
 
