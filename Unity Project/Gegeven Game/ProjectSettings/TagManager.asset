@@ -13,6 +13,7 @@ TagManager:
   - boot 2
   - boot 3
   - oxygenTank
+  - shipPart
   layers:
   - Default
   - TransparentFX
