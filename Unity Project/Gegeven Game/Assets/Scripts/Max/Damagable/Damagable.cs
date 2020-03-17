@@ -18,7 +18,6 @@ public class Damagable : MonoBehaviour
     public void PlayerDamage(float damage)
     {
         health -= damage;
-        //GamePad.SetVibration(0, 20, 20);
     }
 
     public void EnemyDamage(float damage)

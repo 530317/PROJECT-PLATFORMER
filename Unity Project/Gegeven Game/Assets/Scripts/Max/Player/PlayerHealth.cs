@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
+using DG.Tweening;
 
 public class PlayerHealth : Damagable
 {
     public float oxygenLvl;
 
+    public float damageCooldown;
+
     public Slider oxygenSlider;
     public Slider healthSlider;
+
+    [SerializeField]private bool isTakingDamage = false;
 
     PauseMenu pauseMenu;
 
@@ -22,6 +27,11 @@ public class PlayerHealth : Damagable
     private void Update()
     {
         StartCoroutine(OxygenTime(1000, 1, 0.08f));
+
+        if(isTakingDamage)
+        {
+            StartCoroutine(DamageCooldown(damageCooldown));
+        }
 
         if (oxygenLvl <= 0)
         {
@@ -48,13 +58,17 @@ public class PlayerHealth : Damagable
         if (collision.CompareTag("PlantStem"))
         {
             audio.Play();
-            if (health <= 0)
+            if (health > 0)
             {
-                PlayerDamage(3);
+                if(damageCooldown == 0)
+                {
+                    PlayerDamage(3f);
+                    isTakingDamage = true;
+                }
             }
             else
             {
-                PlayerDamage(3);
+                isTakingDamage = false;
             }
         }
 
@@ -80,6 +94,11 @@ public class PlayerHealth : Damagable
             StopCoroutine("OxygenTime");
         }
 
+    }
+
+    private IEnumerator DamageCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
     }
 
     private void Oxygen(float oxygenDamage)
