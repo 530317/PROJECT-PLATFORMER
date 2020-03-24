@@ -11,6 +11,7 @@ public enum PlayerState
 
 public enum PlayerDirection
 {
+    idle,
     right,
     left,
     up,
@@ -67,6 +68,10 @@ public class PlayerControler2 : MonoBehaviour
             spriteRen.flipX = false;
             playerState = PlayerState.moving;
             playerDirection = PlayerDirection.left;
+        }
+        if(xAxis == 0)
+        {
+            playerDirection = PlayerDirection.idle;
         }
         if (xAxis == 0.1)
         {
