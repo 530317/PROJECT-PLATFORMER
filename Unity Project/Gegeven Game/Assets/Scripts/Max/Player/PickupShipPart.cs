@@ -21,6 +21,7 @@ public class PickupShipPart : MonoBehaviour
         RepairShip();
     }
 
+
     private void RepairShip()
     {
         if(amountOfPartsPickedUp >= 4)

@@ -14,6 +14,7 @@ TagManager:
   - boot 3
   - oxygenTank
   - shipPart
+  - DeathBarrier
   layers:
   - Default
   - TransparentFX

@@ -26,24 +26,20 @@ public class PlayerHealth : Damagable
     }
     private void Update()
     {
-        StartCoroutine(OxygenTime(1000, 1, 0.08f));
+        StartCoroutine(OxygenTime(100, 1, 0.05f));
 
-        if(isTakingDamage)
+        if (isTakingDamage)
         {
             StartCoroutine(DamageCooldown(damageCooldown));
         }
 
         if (oxygenLvl <= 0)
         {
-            StartCoroutine(BloodLossTime(1000, 1, 0.08f));
-
-        }
-        else if (oxygenLvl > 0)
-        {
-            StopAllCoroutines();
+            StopCoroutine("OxygenTime");
+            StartCoroutine(BloodLossTime(1000, 1, 0.05f));
         }
 
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -60,7 +56,7 @@ public class PlayerHealth : Damagable
             audio.Play();
             if (health > 0)
             {
-                if(damageCooldown == 0)
+                if(damageCooldown == 2f)
                 {
                     PlayerDamage(3f);
                     isTakingDamage = true;
@@ -76,6 +72,11 @@ public class PlayerHealth : Damagable
         {
             AddOxygen(25f);
             Destroy(collision.gameObject);
+        }
+        
+        if(collision.CompareTag("DeathBarrier"))
+        {
+            Destroy(gameObject);
         }
     }
 

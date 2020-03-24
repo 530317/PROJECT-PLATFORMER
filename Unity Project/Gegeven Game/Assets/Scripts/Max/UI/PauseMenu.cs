@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
+using DG.Tweening;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +13,9 @@ public class PauseMenu : MonoBehaviour
 
     public bool paused = false;
 
+    public GameObject button1, button2;
+
+    public Button button;
 
     void Update()
     {

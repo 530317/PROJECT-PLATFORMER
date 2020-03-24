@@ -5540,6 +5540,7 @@ MonoBehaviour:
   health: 100
   enemyKnockedOutTime: 3
   oxygenLvl: 100
+  damageCooldown: 2
   oxygenSlider: {fileID: 113147925}
   healthSlider: {fileID: 1623273297}
   isTakingDamage: 0
@@ -6360,6 +6361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1066310507}
   paused: 0
+  button1: {fileID: 57252146}
+  button2: {fileID: 148220782}
+  button: {fileID: 0}
 --- !u!224 &1087472683
 RectTransform:
   m_ObjectHideFlags: 0
