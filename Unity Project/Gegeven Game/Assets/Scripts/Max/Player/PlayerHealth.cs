@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Damagable
 {
@@ -41,7 +42,7 @@ public class PlayerHealth : Damagable
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         oxygenSlider.value = oxygenLvl;
