@@ -20,13 +20,13 @@ public class Spikes : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (player.transform.position.x < transform.position.x - 0.01f)
-        {
-            player.transform.DOMoveX(transform.position.x - 10, 2.5f);
-        }
-        else
-        {
-            player.transform.DOMoveX(transform.position.x + 10, 2.5f);
-        }
+        //if (player.transform.position.x < transform.position.x - 0.01f)
+        //{
+        //    player.transform.DOMoveX(-18, 2.5f);
+        //}
+        //else
+        //{
+        //    player.transform.DOMoveX(transform.position.x, 2.5f);
+        //}
     }
 }
