@@ -78,6 +78,20 @@ public class PlayerHealth : Damagable
         {
             Destroy(gameObject);
         }
+        if (collision.CompareTag("Spikes"))
+        {
+            audio.Play();
+            PlayerDamage(3f);
+            //transform.DOPunchPosition(new Vector3(1f, 0f), 1f);
+            if (transform.position.x < collision.transform.position.x)
+            {
+                transform.DOMoveX(collision.transform.position.x - 2, 0.5f);
+            }
+            else
+            {
+                transform.DOMoveX(collision.transform.position.x + 2, 0.5f);
+            }
+        }
     }
 
     public IEnumerator OxygenTime(float oxygenTime, int oxygenDamageCount, float oxygenDamageAmount)
