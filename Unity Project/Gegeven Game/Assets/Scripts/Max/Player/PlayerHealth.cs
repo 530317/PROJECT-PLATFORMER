@@ -56,11 +56,8 @@ public class PlayerHealth : Damagable
             audio.Play();
             if (health > 0)
             {
-                if(damageCooldown == 2f)
-                {
-                    PlayerDamage(3f);
-                    isTakingDamage = true;
-                }
+                PlayerDamage(10f);
+                isTakingDamage = true;
             }
             else
             {
