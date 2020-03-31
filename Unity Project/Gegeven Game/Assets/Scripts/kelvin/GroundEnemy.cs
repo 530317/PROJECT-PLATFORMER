@@ -8,7 +8,6 @@ using DG.Tweening;
 
 public class GroundEnemy : MonoBehaviour
 {
-    public GameObject player;
     public GameObject beginposobject;
     public GameObject endposobject;
 
@@ -22,7 +21,6 @@ public class GroundEnemy : MonoBehaviour
     private float Target;
     public float speed;
 
-    private bool atack;
     bool movebegin;
 
     private void Start()
@@ -34,47 +32,10 @@ public class GroundEnemy : MonoBehaviour
     }
     private void Update()
     {
-        
-        if (atack)
-        {
-            Atack();
-        }
-        else
             Move();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            atack = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        atack = false;
-    }
-    private void Atack()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
-        speed = 7;
-        if (transform.position == player.transform.position)
-        {
-            //if (spriteRen.flipX == true)
-            //{
-            player.transform.DOPunchScale(new Vector3(0.1f, 0f), 1f);
-            //}
-            //if (spriteRen.flipX == false)
-            //{
-            //    player.transform.DOMoveX(-0.5f, 0.09f).SetEase(Ease.OutBounce);
-            //}
-
-            atack = false;
-        }
     }
     private void Move()
     {
-        speed = 6;
         step = speed * Time.deltaTime;
         if (movebegin)
         {
