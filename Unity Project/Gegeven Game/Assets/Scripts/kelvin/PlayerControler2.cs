@@ -74,6 +74,11 @@ public class PlayerControler2 : MonoBehaviour
         {
             print("still");
         }
+        if (XCI.GetButtonUp(XboxButton.X))
+        {
+            playerDirection = PlayerDirection.punch;
+        }
+
 
         PlayerFace();
 
