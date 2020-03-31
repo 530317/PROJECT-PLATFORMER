@@ -39,7 +39,6 @@ public class PlayerControler2 : MonoBehaviour
         spriteRen = GetComponent<SpriteRenderer>();
         rigiBody = GetComponent<Rigidbody2D>();
         jumps = jumpsvalue;
-        spriteRen.flipX = false;
     }
 
     private void FixedUpdate()
@@ -59,13 +58,11 @@ public class PlayerControler2 : MonoBehaviour
         }
         if (xAxis > 0.1)
         {
-            spriteRen.flipX = true;
             playerState = PlayerState.moving;
             playerDirection = PlayerDirection.right;
         }
         if (xAxis < 0.1)
         {
-            spriteRen.flipX = false;
             playerState = PlayerState.moving;
             playerDirection = PlayerDirection.left;
         }
@@ -75,8 +72,16 @@ public class PlayerControler2 : MonoBehaviour
         }
         if (xAxis == 0.1)
         {
-            spriteRen.flipX = true;
             print("still");
+        }
+
+        if(playerDirection == PlayerDirection.right)
+        {
+            spriteRen.flipX = true;
+        }
+        if(playerDirection == PlayerDirection.left)
+        {
+            spriteRen.flipX = false;
         }
     }
 

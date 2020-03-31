@@ -10,6 +10,8 @@ public class Damagable : MonoBehaviour
     public float enemyKnockedOutTime = 3f;
     private float bloodLossSpeed = 5f;
 
+    [SerializeField] private AudioSource oxygenLoss;
+
     private void Start()
     {
         health = Mathf.Clamp(100, 0, 100);
