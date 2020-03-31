@@ -6,7 +6,7 @@ using static Platformer.Core.Simulation;
 using static Platformer.Mechanics.PatrolPath;
 using DG.Tweening;
 
-public class FlyingEnemy : MonoBehaviour
+public class GroundEnemy : MonoBehaviour
 {
     public GameObject player;
     public GameObject beginposobject;
