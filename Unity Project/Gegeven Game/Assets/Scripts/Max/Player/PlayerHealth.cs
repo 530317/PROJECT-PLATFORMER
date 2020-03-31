@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
 using DG.Tweening;
+using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Damagable
 {
@@ -11,8 +13,13 @@ public class PlayerHealth : Damagable
 
     public float damageCooldown;
 
+    [Header("Sliders")]
     public Slider oxygenSlider;
     public Slider healthSlider;
+
+    CinemachineVirtualCamera vcam;
+    CinemachineBasicMultiChannelPerlin noise;
+
 
     [SerializeField]private bool isTakingDamage = false;
 
@@ -23,6 +30,9 @@ public class PlayerHealth : Damagable
     private void Start()
     {
         pauseMenu = FindObjectOfType<PauseMenu>();
+
+        vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+        noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
     private void Update()
     {
@@ -57,11 +67,12 @@ public class PlayerHealth : Damagable
             if (health > 0)
             {
                 PlayerDamage(10f);
+                StartCoroutine(CameraShake(2,2));
                 isTakingDamage = true;
             }
-            else
+            if (health <= 0)
             {
-                isTakingDamage = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
 
@@ -90,6 +101,19 @@ public class PlayerHealth : Damagable
             }
         }
     }
+    
+    private IEnumerator CameraShake(float amplitudeGain, float frequencyGain)
+    {
+        noise.m_AmplitudeGain = amplitudeGain;
+        noise.m_FrequencyGain = frequencyGain;
+
+        yield return new WaitForSeconds(0.5f);
+
+        noise.m_AmplitudeGain = 0;
+       noise.m_FrequencyGain = 0;
+    }
+
+ 
 
     public IEnumerator OxygenTime(float oxygenTime, int oxygenDamageCount, float oxygenDamageAmount)
     {
