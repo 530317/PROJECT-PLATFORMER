@@ -15,6 +15,7 @@ TagManager:
   - oxygenTank
   - shipPart
   - DeathBarrier
+  - Spikes
   layers:
   - Default
   - TransparentFX
