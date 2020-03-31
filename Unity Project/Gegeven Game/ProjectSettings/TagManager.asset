@@ -16,6 +16,7 @@ TagManager:
   - shipPart
   - DeathBarrier
   - Spikes
+  - jump boost
   layers:
   - Default
   - TransparentFX

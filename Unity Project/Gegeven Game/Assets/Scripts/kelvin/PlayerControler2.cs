@@ -38,6 +38,7 @@ public class PlayerControler2 : MonoBehaviour
     {
         spriteRen = GetComponent<SpriteRenderer>();
         rigiBody = GetComponent<Rigidbody2D>();
+        jumpsvalue = 1;
         jumps = jumpsvalue;
     }
 
@@ -74,6 +75,11 @@ public class PlayerControler2 : MonoBehaviour
         {
             print("still");
         }
+        if (XCI.GetButtonUp(XboxButton.X))
+        {
+            playerDirection = PlayerDirection.punch;
+        }
+
 
         PlayerFace();
 
@@ -86,6 +92,11 @@ public class PlayerControler2 : MonoBehaviour
         {
             print("ground");
             jumps = jumpsvalue;
+        }
+        if (collision.gameObject.tag == "jump boost")
+        {
+            print("boost");
+            jumpsvalue = 2;
         }
     }
 
@@ -114,6 +125,5 @@ public class PlayerControler2 : MonoBehaviour
             spriteRen.flipX = false;
         }
     }
-
 }
 

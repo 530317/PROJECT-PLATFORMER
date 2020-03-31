@@ -7,7 +7,7 @@ public class StartMeneu : MonoBehaviour
 {
     public void Level()
     {
-        SceneManager.LoadScene("Max 1");
+        SceneManager.LoadScene("Max 3");
     }
     public void Options()
     {
