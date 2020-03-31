@@ -51,7 +51,7 @@ public class PlayerHealth : Damagable
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         oxygenSlider.value = oxygenLvl;
@@ -81,7 +81,7 @@ public class PlayerHealth : Damagable
             AddOxygen(25f);
             Destroy(collision.gameObject);
         }
-        
+
         if(collision.CompareTag("DeathBarrier"))
         {
             Destroy(gameObject);
@@ -101,7 +101,7 @@ public class PlayerHealth : Damagable
             }
         }
     }
-    
+
     private IEnumerator CameraShake(float amplitudeGain, float frequencyGain)
     {
         noise.m_AmplitudeGain = amplitudeGain;
@@ -113,7 +113,7 @@ public class PlayerHealth : Damagable
        noise.m_FrequencyGain = 0;
     }
 
- 
+
 
     public IEnumerator OxygenTime(float oxygenTime, int oxygenDamageCount, float oxygenDamageAmount)
     {
