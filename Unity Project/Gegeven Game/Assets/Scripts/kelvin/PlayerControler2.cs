@@ -75,14 +75,8 @@ public class PlayerControler2 : MonoBehaviour
             print("still");
         }
 
-        if(playerDirection == PlayerDirection.right)
-        {
-            spriteRen.flipX = true;
-        }
-        if(playerDirection == PlayerDirection.left)
-        {
-            spriteRen.flipX = false;
-        }
+        PlayerFace();
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -101,6 +95,25 @@ public class PlayerControler2 : MonoBehaviour
         playerAnimator.SetFloat("direction", (float)playerDirection);
     }
 
+    private void PlayerFace()
+    {
+        if (playerDirection == PlayerDirection.right)
+        {
+            spriteRen.flipX = true;
+        }
+        if (playerDirection == PlayerDirection.left)
+        {
+            spriteRen.flipX = false;
+        }
+        if (playerDirection == PlayerDirection.idle && playerDirection == PlayerDirection.right)
+        {
+            spriteRen.flipX = true;
+        }
+        if (playerDirection == PlayerDirection.idle && playerDirection == PlayerDirection.left)
+        {
+            spriteRen.flipX = false;
+        }
+    }
 
 }
 
