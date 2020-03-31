@@ -9,6 +9,7 @@ public class EnemyHealth : Damagable
     public float throwBackForce;
     public float upThrowForce;
 
+    [SerializeField] private AudioSource audioSource;
 
     private void Update()
     {
@@ -19,6 +20,7 @@ public class EnemyHealth : Damagable
     {
         if(collision.CompareTag("fist"))
         {
+            audioSource.Play();
             EnemyDamage(10);
             transform.DOPunchScale(new Vector2(0.05f, 0.05f), 1f);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * upThrowForce, ForceMode2D.Impulse);
