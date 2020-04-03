@@ -17,6 +17,7 @@ TagManager:
   - DeathBarrier
   - Spikes
   - jump boost
+  - NoDamage
   layers:
   - Default
   - TransparentFX

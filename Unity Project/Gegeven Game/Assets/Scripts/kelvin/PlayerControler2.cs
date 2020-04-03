@@ -24,6 +24,7 @@ public class PlayerControler2 : MonoBehaviour
     public float moveSpeed;
     public float force;
     private float xAxis;
+    private float yAxis;
 
     private Rigidbody2D rigiBody;
     private SpriteRenderer spriteRen;
@@ -47,14 +48,15 @@ public class PlayerControler2 : MonoBehaviour
     {
         xAxis = XCI.GetAxis(XboxAxis.LeftStickX);
         rigiBody.velocity = new Vector2(xAxis * moveSpeed, rigiBody.velocity.y);
-       
+
     }
     private void Update()
     {
         UpdateAnimatorValues();
 
-        if (XCI.GetButtonDown(XboxButton.A) && jumps > 0)
+        if (XCI.GetButton(XboxButton.A) && jumps > 0)
         {
+            playerDirection = PlayerDirection.up;
             rigiBody.velocity = Vector2.up * force;
             jumps--;
         }
@@ -68,7 +70,7 @@ public class PlayerControler2 : MonoBehaviour
             playerState = PlayerState.moving;
             playerDirection = PlayerDirection.left;
         }
-        if(xAxis == 0)
+        if (xAxis == 0)
         {
             playerDirection = PlayerDirection.idle;
         }
@@ -80,7 +82,10 @@ public class PlayerControler2 : MonoBehaviour
         {
             playerDirection = PlayerDirection.punch;
         }
-
+        if (XCI.GetButton(XboxButton.A) && playerDirection == PlayerDirection.right)
+        {
+            playerDirection = PlayerDirection.up;
+        }
 
         PlayerFace();
 

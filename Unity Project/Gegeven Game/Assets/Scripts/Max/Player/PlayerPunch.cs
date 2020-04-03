@@ -27,6 +27,7 @@ public class PlayerPunch : MonoBehaviour
         if(gameObject.GetComponent<SpriteRenderer>().flipX == true)
         {
             rightCollider.enabled = true;
+            StartCoroutine(PunchDelay());
         }
     }
 
@@ -35,6 +36,7 @@ public class PlayerPunch : MonoBehaviour
         if (gameObject.GetComponent<SpriteRenderer>().flipX == false)
         {
             leftCollider.enabled = true;
+            StartCoroutine(PunchDelay());
         }
     }
 
@@ -47,6 +49,8 @@ public class PlayerPunch : MonoBehaviour
 
     private IEnumerator PunchDelay()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
+        leftCollider.enabled = false;
+        rightCollider.enabled = false;
     }
 }

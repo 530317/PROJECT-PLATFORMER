@@ -21,7 +21,7 @@ public class PlayerHealth : Damagable
     CinemachineBasicMultiChannelPerlin noise;
 
 
-    [SerializeField]private bool isTakingDamage = false;
+    [SerializeField]private bool isTakingDamage;
 
     PauseMenu pauseMenu;
 
@@ -63,12 +63,27 @@ public class PlayerHealth : Damagable
     {
         if (collision.CompareTag("PlantStem"))
         {
-            audio.Play();
             if (health > 0)
             {
-                PlayerDamage(10f);
-                StartCoroutine(CameraShake(2,2));
-                isTakingDamage = true;
+                if(isTakingDamage == false)
+                {
+                    PlayerDamage(5f);
+                    gameObject.tag = "NoDamage";
+
+                    StartCoroutine(DamageCooldown(2f));
+                }
+
+
+                //audio.Play();
+                //PlayerDamage(5f);
+                //isTakingDamage = true;
+                //StartCoroutine(CameraShake(2, 2));
+
+                //if(isTakingDamage == true)
+                //{
+                //    PlayerDamage(0f);
+                //    StartCoroutine(DamageCooldown(2f));
+                //}
             }
             if (health <= 0)
             {
@@ -113,13 +128,15 @@ public class PlayerHealth : Damagable
 
     private IEnumerator CameraShake(float amplitudeGain, float frequencyGain)
     {
+        isTakingDamage = true;
+
         noise.m_AmplitudeGain = amplitudeGain;
         noise.m_FrequencyGain = frequencyGain;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
 
         noise.m_AmplitudeGain = 0;
-       noise.m_FrequencyGain = 0;
+        noise.m_FrequencyGain = 0;
     }
 
 
@@ -138,12 +155,13 @@ public class PlayerHealth : Damagable
         {
             StopCoroutine("OxygenTime");
         }
-
     }
 
     private IEnumerator DamageCooldown(float cooldown)
     {
         yield return new WaitForSeconds(cooldown);
+
+        gameObject.tag = "Player";
     }
 
     private void Oxygen(float oxygenDamage)
