@@ -10025,7 +10025,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.47, y: 8.92}
+    oldSize: {x: 6.55, y: 8.88}
     newSize: {x: 4.31, y: 8.76}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -10206,7 +10206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rightCollider: {fileID: 1657117295}
-  leftCollider: {fileID: 0}
+  leftCollider: {fileID: 737236777}
 --- !u!1001 &931471880
 PrefabInstance:
   m_ObjectHideFlags: 0

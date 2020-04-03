@@ -13,21 +13,6 @@ public class PlayerPunch : MonoBehaviour
 
     void Update()
     {
-        Punch();
-    }
-
-    private void Punch()
-    {
-
-        if (XCI.GetButton(XboxButton.X))
-        {
-        }
-        else
-        {
-            StartCoroutine(PunchDelay());
-        }
-
-    
     }
 
     private void CheckDirectionAndPunch()
@@ -39,16 +24,26 @@ public class PlayerPunch : MonoBehaviour
 
     public void ActivateRightCollider()
     {
-        rightCollider.enabled = true;
-        StartCoroutine(PunchDelay());
-        rightCollider.enabled = false;
+        if(gameObject.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            rightCollider.enabled = true;
+        }
     }
 
     public void ActivateLeftCollider()
     {
-        leftCollider.enabled = true;
+        if (gameObject.GetComponent<SpriteRenderer>().flipX == false)
+        {
+            leftCollider.enabled = true;
+        }
     }
 
+    public void TurnOfColliders()
+    {
+
+        leftCollider.enabled = false;
+        rightCollider.enabled = false;
+    }
 
     private IEnumerator PunchDelay()
     {
