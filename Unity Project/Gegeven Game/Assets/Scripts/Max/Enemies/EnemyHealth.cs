@@ -21,7 +21,7 @@ public class EnemyHealth : Damagable
         if(collision.CompareTag("fist"))
         {
             audioSource.Play();
-            EnemyDamage(10);
+            EnemyDamage(35);
             transform.DOPunchScale(new Vector2(0.05f, 0.05f), 1f);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * upThrowForce, ForceMode2D.Impulse);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * throwBackForce, ForceMode2D.Impulse);
