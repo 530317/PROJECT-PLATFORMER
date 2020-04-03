@@ -21,7 +21,6 @@ public class PlayerPunch : MonoBehaviour
 
         if (XCI.GetButton(XboxButton.X))
         {
-            playerDirection = PlayerDirection.punch;
         }
         else
         {
@@ -35,7 +34,6 @@ public class PlayerPunch : MonoBehaviour
     {
         if(XCI.GetButton(XboxButton.X) && gameObject.GetComponent<SpriteRenderer>().flipX == true)
         {
-            playerDirection = PlayerDirection.punch;
         }
     }
 

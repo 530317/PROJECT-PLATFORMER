@@ -6,7 +6,8 @@ using XboxCtrlrInput;
 public enum PlayerState
 {
     idle = 0,
-    moving = 1
+    moving = 1,
+    punch = 2
 }
 
 public enum PlayerDirection
@@ -75,7 +76,7 @@ public class PlayerControler2 : MonoBehaviour
         {
             print("still");
         }
-        if (XCI.GetButtonUp(XboxButton.X))
+        if (XCI.GetButton(XboxButton.X))
         {
             playerDirection = PlayerDirection.punch;
         }
