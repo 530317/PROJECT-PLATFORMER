@@ -18371,7 +18371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   force: 7
-  jumpsvalue: 2
+  jumpsvalue: 1
   playerAnimator: {fileID: 1822460762}
   playerState: 0
   playerDirection: 0
