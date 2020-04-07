@@ -93,16 +93,6 @@ public class PlayerHealth : Damagable
         {
             audio.Play();
             PlayerDamage(3f);
-            //transform.DOPunchPosition(new Vector3(1f, 0f), 1f);
-            if (transform.position.y < collision.transform.position.y)
-            {
-                transform.DOMoveX(collision.transform.position.x - 2, 0.5f);
-            }
-            else
-            {
-                transform.DOMoveY(collision.transform.position.y + 4, 1f);
-                print("up");
-            }
         }
         if (collision.CompareTag("DeathBarrier"))
         {

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
     public GameObject player;
+    public float force = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,18 +16,20 @@ public class Spikes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.DOPunchPosition(new Vector3(1f, 0f), 1f);
-        
+
     }
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
-        //if (player.transform.position.x < transform.position.x - 0.01f)
-        //{
-        //    player.transform.DOMoveX(-18, 2.5f);
-        //}
-        //else
-        //{
-        //    player.transform.DOMoveX(transform.position.x, 2.5f);
-        //}
+
+       
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+           player.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,force), ForceMode2D.Impulse);
+            print("up");
+            print(collision.gameObject);
+        }
     }
 }
