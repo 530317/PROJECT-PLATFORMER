@@ -54,11 +54,11 @@ public class PlayerControler2 : MonoBehaviour
     {
         UpdateAnimatorValues();
 
-        if (XCI.GetButton(XboxButton.A) && jumps > 0)
+        if (XCI.GetButtonDown(XboxButton.A) && jumps > 0)
         {
-            playerDirection = PlayerDirection.up;
             rigiBody.velocity = Vector2.up * force;
             jumps--;
+
         }
         if (xAxis > 0.1)
         {
@@ -82,10 +82,10 @@ public class PlayerControler2 : MonoBehaviour
         {
             playerDirection = PlayerDirection.punch;
         }
-        if (XCI.GetButton(XboxButton.A) && playerDirection == PlayerDirection.right)
-        {
-            playerDirection = PlayerDirection.up;
-        }
+        //if (XCI.GetButton(XboxButton.A) && playerDirection == PlayerDirection.right)
+        //{
+        //    playerDirection = PlayerDirection.up;
+        //}
 
         PlayerFace();
 
@@ -93,16 +93,15 @@ public class PlayerControler2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-         print("hit");
         if (collision.gameObject.tag == "Ground")
         {
-            print("ground");
             jumps = jumpsvalue;
         }
         if (collision.gameObject.tag == "jump boost")
         {
-            print("boost");
             jumpsvalue = 2;
+            jumps = jumpsvalue;
+            Destroy(collision.gameObject);
         }
     }
 
