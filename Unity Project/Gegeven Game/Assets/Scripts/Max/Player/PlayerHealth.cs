@@ -146,7 +146,7 @@ public class PlayerHealth : Damagable
 
     private IEnumerator PlayerFlash(float cooldown)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 8; i++)
         {
             gameObject.GetComponent<SpriteRenderer>().color = color;
 
