@@ -27,6 +27,9 @@ public class PlayerHealth : Damagable
 
     [SerializeField] private AudioSource audio;
 
+    [SerializeField] private Color color = Color.white;
+    [SerializeField] private Color color2 = Color.white;
+
     private void Start()
     {
         pauseMenu = FindObjectOfType<PauseMenu>();
@@ -37,11 +40,6 @@ public class PlayerHealth : Damagable
     private void Update()
     {
         StartCoroutine(OxygenTime(100, 1, 0.05f));
-
-        if (isTakingDamage)
-        {
-            StartCoroutine(DamageCooldown(damageCooldown));
-        }
 
         if (oxygenLvl <= 0)
         {
@@ -65,25 +63,15 @@ public class PlayerHealth : Damagable
         {
             if (health > 0)
             {
-                if(isTakingDamage == false)
+                if (isTakingDamage == false)
                 {
                     PlayerDamage(5f);
+
+                    audio.Play();
+                    StartCoroutine(PlayerFlash(0.1f));
+                    StartCoroutine(CameraShake(2, 2));
                     gameObject.tag = "NoDamage";
-
-                    StartCoroutine(DamageCooldown(2f));
                 }
-
-
-                //audio.Play();
-                //PlayerDamage(5f);
-                //isTakingDamage = true;
-                //StartCoroutine(CameraShake(2, 2));
-
-                //if(isTakingDamage == true)
-                //{
-                //    PlayerDamage(0f);
-                //    StartCoroutine(DamageCooldown(2f));
-                //}
             }
             if (health <= 0)
             {
@@ -122,19 +110,18 @@ public class PlayerHealth : Damagable
             {
                 PlayerDamage(100f);
             }
-
         }
     }
 
     private IEnumerator CameraShake(float amplitudeGain, float frequencyGain)
     {
         isTakingDamage = true;
-
         noise.m_AmplitudeGain = amplitudeGain;
         noise.m_FrequencyGain = frequencyGain;
 
         yield return new WaitForSeconds(2f);
 
+        isTakingDamage = false;
         noise.m_AmplitudeGain = 0;
         noise.m_FrequencyGain = 0;
     }
@@ -157,11 +144,18 @@ public class PlayerHealth : Damagable
         }
     }
 
-    private IEnumerator DamageCooldown(float cooldown)
+    private IEnumerator PlayerFlash(float cooldown)
     {
-        yield return new WaitForSeconds(cooldown);
+        for (int i = 0; i < 6; i++)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = color;
 
-        gameObject.tag = "Player";
+            yield return new WaitForSeconds(cooldown);
+
+            gameObject.GetComponent<SpriteRenderer>().color = color2;
+
+            yield return new WaitForSeconds(cooldown);
+        }
     }
 
     private void Oxygen(float oxygenDamage)

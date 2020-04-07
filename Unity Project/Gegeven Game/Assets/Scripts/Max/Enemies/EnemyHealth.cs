@@ -32,7 +32,7 @@ public class EnemyHealth : Damagable
     {
         if(health <= 0)
         {
-            transform.DOScaleY(0, 1f);
+            Destroy(gameObject);
         }
     }
 
