@@ -5546,7 +5546,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1087472682}
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -10449,7 +10449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a329f30cbfb4b5f48ae4ec22378d58df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 1078363725}
   paused: 0
   button1: {fileID: 0}
   button2: {fileID: 0}
@@ -11003,7 +11003,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1087472682}
         m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
@@ -14008,7 +14008,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1087472682}
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
