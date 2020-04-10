@@ -18,6 +18,7 @@ TagManager:
   - Spikes
   - jump boost
   - NoDamage
+  - Portal
   layers:
   - Default
   - TransparentFX

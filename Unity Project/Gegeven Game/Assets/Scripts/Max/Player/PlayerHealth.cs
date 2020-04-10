@@ -129,7 +129,7 @@ public class PlayerHealth : Damagable
         }
 
         if (pauseMenu.paused == true)
-        {
+        { 
             StopCoroutine("OxygenTime");
         }
     }
