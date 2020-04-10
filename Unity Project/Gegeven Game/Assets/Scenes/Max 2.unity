@@ -221,6 +221,8 @@ MonoBehaviour:
   throwBackForce: 1.5
   upThrowForce: 1
   audioSource: {fileID: 614477564}
+  color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  color2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &22011285
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1296,6 +1298,8 @@ MonoBehaviour:
   throwBackForce: 0
   upThrowForce: 0
   audioSource: {fileID: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  color2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &93107238
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2534,7 +2538,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198438608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -3850,6 +3854,8 @@ MonoBehaviour:
   throwBackForce: 1.5
   upThrowForce: 1
   audioSource: {fileID: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  color2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &333306730
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,6 +4819,8 @@ MonoBehaviour:
   throwBackForce: 1.5
   upThrowForce: 1
   audioSource: {fileID: 614477564}
+  color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  color2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &443574295
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18232,6 +18240,8 @@ MonoBehaviour:
   throwBackForce: 1.5
   upThrowForce: 1
   audioSource: {fileID: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  color2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &1795396141
 Rigidbody2D:
   serializedVersion: 4
@@ -18392,6 +18402,8 @@ MonoBehaviour:
   throwBackForce: 0
   upThrowForce: 0
   audioSource: {fileID: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  color2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1801831472
 GameObject:
   m_ObjectHideFlags: 0

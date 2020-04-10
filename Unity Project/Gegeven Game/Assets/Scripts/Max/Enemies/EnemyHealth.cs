@@ -11,6 +11,9 @@ public class EnemyHealth : Damagable
 
     [SerializeField] private AudioSource audioSource;
 
+    [SerializeField] private Color color = Color.white;
+    [SerializeField] private Color color2 = Color.white;
+
     private void Update()
     {
         WhenEnemyIsDown();
@@ -21,8 +24,9 @@ public class EnemyHealth : Damagable
         if(collision.CompareTag("fist"))
         {
             audioSource.Play();
-            EnemyDamage(25);
-            transform.DOPunchScale(new Vector2(0.05f, 0.05f), 1f);
+            EnemyDamage(15);
+            StartCoroutine(EnemyFlash(0.1f));
+            //transform.DOPunchScale(new Vector2(0.05f, 0.05f), 1f);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * upThrowForce, ForceMode2D.Impulse);
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * throwBackForce, ForceMode2D.Impulse);
         }
@@ -36,6 +40,17 @@ public class EnemyHealth : Damagable
         }
     }
 
-    
+    private IEnumerator EnemyFlash(float cooldown)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = color;
 
+            yield return new WaitForSeconds(cooldown);
+
+            gameObject.GetComponent<SpriteRenderer>().color = color2;
+
+            yield return new WaitForSeconds(cooldown);
+        }
+    }
 }
