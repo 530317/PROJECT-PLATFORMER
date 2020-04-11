@@ -7,7 +7,7 @@ public enum PlayerState
 {
     idle = 0,
     moving = 1,
-    punch = 2
+    jump = 2
 }
 
 public enum PlayerDirection
@@ -82,10 +82,10 @@ public class PlayerControler2 : MonoBehaviour
         {
             playerDirection = PlayerDirection.punch;
         }
-        //if (XCI.GetButton(XboxButton.A) && playerDirection == PlayerDirection.right)
-        //{
-        //    playerDirection = PlayerDirection.up;
-        //}
+        if (XCI.GetButtonDown(XboxButton.A))
+        {
+            playerState = PlayerState.jump;
+        }
 
         PlayerFace();
 
