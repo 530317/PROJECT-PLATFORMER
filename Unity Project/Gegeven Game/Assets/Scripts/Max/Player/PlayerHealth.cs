@@ -12,6 +12,7 @@ public class PlayerHealth : Damagable
     public float oxygenLvl;
 
     public float damageCooldown;
+    private float oxygenDamageAmount;
 
     [Header("Sliders")]
     public Slider oxygenSlider;
@@ -25,8 +26,11 @@ public class PlayerHealth : Damagable
 
     PauseMenu pauseMenu;
 
+    [Header("audio")]
     [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource oxygenLoss;
 
+    [Header("Color for player flash")]
     [SerializeField] private Color color = Color.white;
     [SerializeField] private Color color2 = Color.white;
 
@@ -39,13 +43,9 @@ public class PlayerHealth : Damagable
     }
     private void Update()
     {
-        StartCoroutine(OxygenTime(100, 1, 0.05f));
+        //StartCoroutine(OxygenTime(100, 1, 0.05f));
 
-        if (oxygenLvl <= 0)
-        {
-            StopCoroutine("OxygenTime");
-            StartCoroutine(BloodLossTime(1000, 1, 0.05f));
-        }
+        LoseOxygen();
 
         if (health <= 0)
         {
@@ -69,7 +69,7 @@ public class PlayerHealth : Damagable
 
                     audio.Play();
                     StartCoroutine(PlayerFlash(0.1f));
-                    StartCoroutine(CameraShake(2, 2));
+                    StartCoroutine(CameraShake(1.5f, 1.5f));
                     gameObject.tag = "NoDamage";
                 }
             }
@@ -116,21 +116,17 @@ public class PlayerHealth : Damagable
         noise.m_FrequencyGain = 0;
     }
 
-
-
-    public IEnumerator OxygenTime(float oxygenTime, int oxygenDamageCount, float oxygenDamageAmount)
+    public void LoseOxygen()
     {
-        int currentCount = 0;
-        while (currentCount < oxygenDamageAmount)
+        if (oxygenLvl <= 0)
         {
-            oxygenLvl -= oxygenDamageAmount;
-            yield return new WaitForSeconds(oxygenTime);
-            currentCount++;
+            oxygenDamageAmount = 0;
+            StartCoroutine(BloodLossTime(1000, 1, 0.05f));
         }
-
-        if (pauseMenu.paused == true)
-        { 
-            StopCoroutine("OxygenTime");
+        else if(oxygenLvl > 0)
+        {
+            oxygenDamageAmount = 0.05f;
+            oxygenLvl -= oxygenDamageAmount;
         }
     }
 
@@ -146,11 +142,6 @@ public class PlayerHealth : Damagable
 
             yield return new WaitForSeconds(cooldown);
         }
-    }
-
-    private void Oxygen(float oxygenDamage)
-    {
-        oxygenLvl -= oxygenDamage;
     }
 
     public void AddOxygen(float amountOfOxygen)

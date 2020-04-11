@@ -10,7 +10,7 @@ public class Damagable : MonoBehaviour
     public float enemyKnockedOutTime = 3f;
     private float bloodLossSpeed = 5f;
 
-    [SerializeField] private AudioSource oxygenLoss;
+    
 
     private void Start()
     {
@@ -25,7 +25,6 @@ public class Damagable : MonoBehaviour
     public void EnemyDamage(float damage)
     {
         health -= damage;
-
     }
 
     public IEnumerator BloodLossTime(float damageTime, int damageCount, float damageAmount)
